@@ -125,9 +125,9 @@ pub fn run(server: &SocketAddr, shell: &Shell, timeout: u64) -> Result<(), Error
     // Visit our local server to open up the page that runs tests, and then get
     // some handles to objects on the page which we'll be scraping output from.
     //
-    // If WASM_BINDGEN_TEST_ADDRESS is set, use it as the local server URL,
+    // If WASM_BINDGEN_TEST_URL is set, use it as the local server URL,
     // trying to inherit the port from the server if it isn't specified.
-    let url = match std::env::var("WASM_BINDGEN_TEST_ADDRESS") {
+    let url = match std::env::var("WASM_BINDGEN_TEST_URL") {
         Ok(u) => {
             let mut url = Url::parse(&u)?;
             if url.port().is_none() {
